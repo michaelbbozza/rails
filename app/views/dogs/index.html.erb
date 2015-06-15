@@ -1,0 +1,15 @@
+<% @dogs.each do |dog|%>
+<h2><a href="/dogs/<%= dog.id %>"><%= dog.name + " "%><%= dog.breed%></a></h2>
+<form action="/dogs/<%= dog.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
+<form action="/dogs/<%= dog.id%>/edit" method="get">
+  <input type="submit" value="Edit">
+</form>
+<form action="/dogs/new" method="get">
+  <input type="submit" value="Add">
+</form>
+<% end %>
+
+
