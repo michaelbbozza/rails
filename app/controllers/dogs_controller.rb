@@ -6,10 +6,11 @@ class DogsController < ApplicationController
 
   def create
     Dog.create(doggy_params)
-    redirect_to "/dogs"
+    redirect_to dogs_path
   end
 
   def new
+    @dog = Dog.new
   end
 
   def edit
@@ -22,16 +23,16 @@ class DogsController < ApplicationController
 
   def update
     Dog.find_by(id: params[:id]).update(doggy_params)
-    redirect_to "/dogs"
+    redirect_to dogs_path
   end
 
   def destroy
     Dog.find_by(id: params[:id]).destroy
-    redirect_to "/dogs"
+    redirect_to dogs_path
   end
 
 private
 def doggy_params
-    params.require(:dog).permit(:id, :name, :breed)
+    params.require(:dog).permit( :name, :breed)
   end
 end
